@@ -95,7 +95,6 @@ class _ListeScreenState extends State<ListeScreen> {
                           _refresh(); // rafraîchir l'affichage
                         },
                         onTap: () async {
-                          // Naviguer vers l'écran de détail
                           final result = await Navigator.pushNamed(
                             context,
                             '/detail',

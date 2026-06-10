@@ -9,13 +9,13 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final service = TontineService();
-    final cotisation = service.trouverParId(cotisationId);
-
+    final cotisation = tontineService.trouverParId(cotisationId);
     if (cotisation == null) {
       return Scaffold(
         appBar: AppBar(title: Text('Détail')),
-        body: Center(child: Text('Cotisation non trouvée')),
+        body: Center(
+          child: Text('Cotisation non trouvée (ID: $cotisationId)'),
+        ), // affiche l'ID
       );
     }
 

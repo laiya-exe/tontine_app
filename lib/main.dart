@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
           case '/detail':
             final id = settings.arguments as String?;
             if (id == null) {
-              // Si aucun argument, on redirige vers la liste
               return MaterialPageRoute(builder: (context) => ListeScreen());
             }
             return MaterialPageRoute(
