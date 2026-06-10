@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/liste_screen.dart';
-import 'screens/detail_screen.dart';
+import 'screens/membre_detail_screen.dart';
 import 'screens/form_screen.dart';
 import 'screens/about_screen.dart';
 import 'services/tontine_service.dart';
@@ -14,8 +14,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,18 +27,28 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case '/':
             return MaterialPageRoute(builder: (context) => ListeScreen());
-          case '/detail':
-            final id = settings.arguments as String?;
-            if (id == null) {
+          case '/membre':
+            final nom = settings.arguments as String?;
+            if (nom == null)
               return MaterialPageRoute(builder: (context) => ListeScreen());
-            }
             return MaterialPageRoute(
-              builder: (context) => DetailScreen(cotisationId: id),
+              builder: (context) => MembreDetailScreen(membreNom: nom),
             );
           case '/form':
-            final id = settings.arguments as String?;
+            final args = settings.arguments;
+            String? id;
+            String? prefillMembre;
+            if (args is Map) {
+              id = args['id'];
+              prefillMembre = args['prefillMembre'];
+            } else if (args is String?) {
+              id = args;
+            }
             return MaterialPageRoute(
-              builder: (context) => FormulaireScreen(cotisationId: id),
+              builder: (context) => FormulaireScreen(
+                cotisationId: id,
+                prefillMembre: prefillMembre,
+              ),
             );
           case '/about':
             return MaterialPageRoute(builder: (context) => AboutScreen());

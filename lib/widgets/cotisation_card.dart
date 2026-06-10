@@ -15,23 +15,108 @@ class CotisationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      color: cotisation.paye ? Colors.green.shade50 : Colors.red.shade50,
-      child: ListTile(
-        leading: CircleAvatar(child: Text('${cotisation.tour}')),
-        title: Text(cotisation.membre),
-        subtitle: Text(
-          'Montant: ${cotisation.montant} FCFA - ${cotisation.date.toString().split(' ')[0]}',
+    final statutColor = cotisation.paye ? Colors.green : Colors.red;
+
+    final statutBackground = cotisation.paye
+        ? Colors.green.shade50
+        : Colors.red.shade50;
+
+    return InkWell(
+      borderRadius: BorderRadius.circular(16),
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          // ignore: deprecated_member_use
+          border: Border.all(color: Colors.grey.withOpacity(0.15)),
         ),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
+        child: Row(
           children: [
-            Checkbox(
-              value: cotisation.paye,
-              onChanged: (_) => onCheckboxChanged(),
+            CircleAvatar(
+              radius: 24,
+              backgroundColor: statutBackground,
+              child: Text(
+                '${cotisation.tour}',
+                style: TextStyle(
+                  color: statutColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-            IconButton(icon: Icon(Icons.arrow_forward), onPressed: onTap),
+
+            const SizedBox(width: 14),
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    cotisation.membre,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+
+                  const SizedBox(height: 4),
+
+                  Text(
+                    cotisation.date.toString().split(' ')[0],
+                    style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  Row(
+                    children: [
+                      Text(
+                        '${cotisation.montant} FCFA',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+
+                      const SizedBox(width: 10),
+
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: statutBackground,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          cotisation.paye ? 'Payé' : 'Impayé',
+                          style: TextStyle(
+                            color: statutColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Checkbox(
+                  value: cotisation.paye,
+                  onChanged: (_) => onCheckboxChanged(),
+                ),
+
+                IconButton(
+                  icon: const Icon(Icons.arrow_forward_ios, size: 18),
+                  onPressed: onTap,
+                ),
+              ],
+            ),
           ],
         ),
       ),

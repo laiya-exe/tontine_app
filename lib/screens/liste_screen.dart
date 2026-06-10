@@ -20,96 +20,118 @@ class _ListeScreenState extends State<ListeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Récupérer toutes les cotisations depuis le service global
     final toutesLesCotisations = tontineService.cotisations;
 
-    // Appliquer le filtre si nécessaire
     final cotisationsAffichees = _afficherImpayees
         ? toutesLesCotisations.where((c) => !c.paye).toList()
         : toutesLesCotisations;
 
-    // Calcul du total cotisé (toutes cotisations payées)
     final total = tontineService.totalCotise();
 
     return Scaffold(
+      backgroundColor: const Color(0xFFF6F7F9),
       appBar: AppBar(
-        title: Text('Gestion Tontine'),
+        title: const Text('Gestion Tontine'),
+        centerTitle: false,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black87,
         actions: [
-          // Bouton pour afficher uniquement les impayées
           IconButton(
             icon: Icon(
-              _afficherImpayees ? Icons.visibility_off : Icons.visibility,
+              _afficherImpayees
+                  ? Icons.visibility_off_outlined
+                  : Icons.visibility_outlined,
             ),
-            tooltip: 'Afficher uniquement les impayées',
             onPressed: () {
               setState(() {
                 _afficherImpayees = !_afficherImpayees;
               });
             },
           ),
-          // Écran "À propos"
           IconButton(
-            icon: Icon(Icons.info),
+            icon: const Icon(Icons.info_outline),
             onPressed: () {
               Navigator.pushNamed(context, '/about');
             },
           ),
         ],
       ),
-      body: Column(
-        children: [
-          // En-tête avec le total
-          Container(
-            padding: EdgeInsets.all(16),
-            color: Colors.green.shade100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Total cotisé :',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  '$total FCFA',
-                  style: TextStyle(fontSize: 18, color: Colors.green.shade800),
-                ),
-              ],
-            ),
-          ),
-          // Liste des cotisations
-          Expanded(
-            child: cotisationsAffichees.isEmpty
-                ? Center(child: Text('Aucune cotisation à afficher'))
-                : ListView.builder(
-                    itemCount: cotisationsAffichees.length,
-                    itemBuilder: (context, index) {
-                      final cotisation = cotisationsAffichees[index];
-                      return CotisationCard(
-                        cotisation: cotisation,
-                        onCheckboxChanged: () async {
-                          // Inverser l'état payé
-                          final cotisationModifiee = cotisation.copyWith(
-                            paye: !cotisation.paye,
-                          );
-                          await tontineService.modifier(cotisationModifiee);
-                          _refresh(); // rafraîchir l'affichage
-                        },
-                        onTap: () async {
-                          final result = await Navigator.pushNamed(
-                            context,
-                            '/detail',
-                            arguments: cotisation.id,
-                          );
-                          if (result == true) _refresh();
-                        },
-                      );
-                    },
+
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Colors.grey.withOpacity(0.15)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Total cotisé',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
-          ),
-        ],
+                  Text(
+                    '$total FCFA',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green.shade700,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 16),
+
+            Expanded(
+              child: cotisationsAffichees.isEmpty
+                  ? const Center(
+                      child: Text(
+                        'Aucune cotisation à afficher',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    )
+                  : ListView.separated(
+                      itemCount: cotisationsAffichees.length,
+                      separatorBuilder: (_, __) => const SizedBox(height: 10),
+                      itemBuilder: (context, index) {
+                        final cotisation = cotisationsAffichees[index];
+
+                        return CotisationCard(
+                          cotisation: cotisation,
+                          onCheckboxChanged: () async {
+                            final modifiee = cotisation.copyWith(
+                              paye: !cotisation.paye,
+                            );
+                            await tontineService.modifier(modifiee);
+                            _refresh();
+                          },
+                          onTap: () async {
+                            final result = await Navigator.pushNamed(
+                              context,
+                              '/membre',
+                              arguments: cotisation.membre,
+                            );
+                            if (result == true) _refresh();
+                          },
+                        );
+                      },
+                    ),
+            ),
+          ],
+        ),
       ),
+
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        elevation: 1,
+        child: const Icon(Icons.add),
         onPressed: () async {
           final result = await Navigator.pushNamed(context, '/form');
           if (result == true) _refresh();
