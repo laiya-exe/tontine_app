@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/cotisation.dart';
-import '../services/tontine_service.dart';
-import 'package:tontine_app/main.dart'; // pour accéder à tontineService declaré dans main.fart
+import 'package:tontine_app/main.dart'; // pour tontineService
 
 class FormulaireScreen extends StatefulWidget {
   final String? cotisationId;
-
   const FormulaireScreen({super.key, this.cotisationId});
 
   @override
@@ -15,32 +13,33 @@ class FormulaireScreen extends StatefulWidget {
 
 class _FormulaireScreenState extends State<FormulaireScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TontineService _service = TontineService();
 
-  late String _membre;
-  late int _montant;
-  late int _tour;
-  late DateTime _date;
-  late bool _paye;
+  // Au lieu de late, initialise avec des valeurs par défaut
+  String _membre = '';
+  int _montant = 0;
+  int _tour = 1;
+  DateTime _date = DateTime.now();
+  bool _paye = false;
 
   @override
   void initState() {
     super.initState();
+    // Si c'est une modification, on charge les données existantes
     if (widget.cotisationId != null) {
-      final existing = _service.trouverParId(widget.cotisationId!);
-      if (existing != null) {
-        _membre = existing.membre;
-        _montant = existing.montant;
-        _tour = existing.tour;
-        _date = existing.date;
-        _paye = existing.paye;
-      }
-    } else {
-      _membre = '';
-      _montant = 0;
-      _tour = 1;
-      _date = DateTime.now();
-      _paye = false;
+      _loadCotisation();
+    }
+  }
+
+  Future<void> _loadCotisation() async {
+    final cotisation = tontineService.trouverParId(widget.cotisationId!);
+    if (cotisation != null) {
+      setState(() {
+        _membre = cotisation.membre;
+        _montant = cotisation.montant;
+        _tour = cotisation.tour;
+        _date = cotisation.date;
+        _paye = cotisation.paye;
+      });
     }
   }
 
@@ -68,7 +67,7 @@ class _FormulaireScreenState extends State<FormulaireScreen> {
                 onSaved: (value) => _membre = value!,
               ),
               TextFormField(
-                initialValue: _montant.toString(),
+                initialValue: _montant == 0 ? '' : _montant.toString(),
                 decoration: InputDecoration(labelText: 'Montant (FCFA)'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -144,11 +143,8 @@ class _FormulaireScreenState extends State<FormulaireScreen> {
                     } else {
                       await tontineService.modifier(newCotisation);
                     }
-                    Navigator.pop(
-                      // ignore: use_build_context_synchronously
-                      context,
-                      true,
-                    ); // true pour rafraîchir la liste
+                    // ignore: use_build_context_synchronously
+                    Navigator.pop(context, true);
                   }
                 },
                 child: Text('Enregistrer'),

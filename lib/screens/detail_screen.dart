@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tontine_app/main.dart';
-import '../services/tontine_service.dart';
 
 class DetailScreen extends StatelessWidget {
   final String cotisationId;
