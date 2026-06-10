@@ -1,17 +1,10 @@
 # tontine_app
 
-A new Flutter project.
+# Collecte des données réelles (modele generique avant les donnees reelles)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Tontine
+- Nombre de membres : 8 (Awa, Binta, Cheikh, Diarra, Moussa, Fatou, Aida, Mohamed)
+- Montant par tour : 10 000 FCFA
+- Périodicité : mensuelle
+- Durée totale : 8 mois
+- Règle : chaque membre reçoit le montant total (80 000 FCFA) à son tour. Ordre tiré au sort.
