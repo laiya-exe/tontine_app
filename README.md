@@ -4,7 +4,7 @@
 - **Auteur** : Akinlaiya G. AKPONIKPE
 - **Date** : Vendredi 12 Juin 2026
 - **Contexte** : Module développement multiplateforme – ODD 1 : Pas de pauvreté  
-- **Sujet** : - [Enoncé du sujet](SUJET.md)
+- **Sujet** : [Enoncé du sujet](SUJET.md)
 
 ---
 
