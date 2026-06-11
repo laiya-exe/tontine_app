@@ -152,5 +152,3 @@ Cette astuce permet de bénéficier de `shared_preferences` sur le web sans pert
 ## Conclusion
 
 L’application remplit toutes les exigences du sujet : CRUD complet, routage nommé, état géré avec `StatefulWidget` et `setState`, UI personnalisée et d’une méthode de calcul, persistance des données. Elle est fonctionnelle sur le web (avec port fixe) et répond au besoin réel de gestion d’une tontine sénégalaise.
-
-```
