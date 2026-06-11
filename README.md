@@ -4,6 +4,7 @@
 - **Auteur** : Akinlaiya G. AKPONIKPE
 - **Date** : Vendredi 12 Juin 2026
 - **Contexte** : Module développement multiplateforme – ODD 1 : Pas de pauvreté  
+- **Sujet** : - [Enoncé du sujet](SUJET.md)
 
 ---
 
@@ -17,7 +18,7 @@ L'application permet de gérer les cotisations d’une tontine de quartier à Da
 
 - **Source** : Tontine de jeunes – quartier de Dakar, Sénégal.  
 - **Description** : 8 membres (Awa, Binta, Cheikh, Diarra, Moussa, Mohamed, Fatou, Aïda), montant par tour : 10 000 FCFA, périodicité hebdomadaire, durée totale 2 mois (8 tours).  
-- **Date de collecte** : 6 juin 2026.  
+- **Date de collecte** : 12 juin 2026.  
 - **Preuves** : photos dans le dossier `assets/proofs/`.
 
 ---

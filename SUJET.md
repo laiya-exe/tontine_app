@@ -1,17 +1,19 @@
-# 1. Présentation et objectifs
+# Sujet 
+
+## 1. Présentation et objectifs
 
 Dans le cadre du module de développement multiplateforme, chaque étudiant réalise individuellement une application Flutter complète sur une thématique qui lui est propre (voir votre fiche personnelle en fin de document), en lien avec un Objectif de Développement Durable (ODD) et le contexte sénégalais.  
 L'objectif est de démontrer votre maîtrise des fondamentaux de Flutter à travers une application fonctionnelle, personnelle et bien documentée, que vous êtes capable de présenter et d'expliquer.
 
 
-# 2. Calendrier et livrables
+## 2. Calendrier et livrables
 
-## Calendrier
+### Calendrier
 
 - Remise du sujet au responsable : lundi 1er juin 2026  
 - Date limite de rendu (projet + rapport + vidéo) : vendredi 12 juin 2026
 
-## Livrables attendus
+### Livrables attendus
 
 1. **Le projet** : code source de l'application sur un dépôt Git (GitHub ou GitLab), avec des commits réguliers et datés tout au long du travail (et non un dépôt déposé en une seule fois).  
 2. **Un écran « À propos »** dans l'application affichant votre nom, la source de vos données et la date de collecte.  
@@ -20,7 +22,7 @@ L'objectif est de démontrer votre maîtrise des fondamentaux de Flutter à trav
 5. **Le jeu de données réel** que vous avez collecté (selon votre fiche), avec ses preuves : photos datées et lieu.
 
 
-# 3. Compétences et fonctionnalités attendues
+## 3. Compétences et fonctionnalités attendues
 
 Quel que soit votre sujet, votre application doit démontrer clairement les cinq notions suivantes. Ces exigences sont les mêmes pour tous.
 
@@ -33,16 +35,16 @@ Quel que soit votre sujet, votre application doit démontrer clairement les cinq
 | **Routage** | Au moins 3 écrans. Navigation par routes nommées (`routes` de `MaterialApp` / `onGenerateRoute` + `Navigator`) ou `go_router`. Le passage d'arguments entre écrans est exigé au moins une fois. |
 
 
-# 4. La vidéo de présentation (10 minutes)
+## 4. La vidéo de présentation (10 minutes)
 
 La vidéo dure 10 minutes au total et se divise en deux parties égales. Votre voix doit être audible, votre écran lisible, et vous annoncez votre nom au début. Une seule prise continue est recommandée.
 
-## Partie 1 — Présentation du projet et du code (5 min)
+### Partie 1 — Présentation du projet et du code (5 min)
 
 - Démonstration de l'application en fonctionnement : le CRUD complet et la navigation entre vos écrans.
 - Parcours de votre code en expliquant les concepts demandés : votre modèle Dart, le choix Stateless / Stateful et l'appel à `setState`, la personnalisation de l'interface, le CRUD et le routage.
 
-## Partie 2 — Live coding (5 min)
+### Partie 2 — Live coding (5 min)
 
 - Vous codez et expliquez « comment » vous réalisez les fonctionnalités propres à votre projet (listées sur votre fiche personnelle), en montrant l'éditeur et le résultat (hot reload).
 - Expliquez vos choix au fur et à mesure : pourquoi tel widget, où l'état est mis à jour, comment l'argument est passé entre écrans.
@@ -50,7 +52,7 @@ La vidéo dure 10 minutes au total et se divise en deux parties égales. Votre v
 **Important :** votre vidéo et votre rapport doivent correspondre à votre code. Toute incohérence entre ce que vous présentez et ce que fait réellement votre application sera pénalisée.
 
 
-# 5. Modèle de rapport individuel (2 à 3 pages)
+## 5. Modèle de rapport individuel (2 à 3 pages)
 
 Rédigez le rapport avec vos propres mots. Lorsque c'est demandé, citez le fichier et la ligne exacte de votre code.
 
@@ -73,7 +75,7 @@ Rédigez le rapport avec vos propres mots. Lorsque c'est demandé, citez le fich
 9. **Captures d'écran** de vos écrans.
 
 
-# 6. Modalités d'évaluation — barème sur 20
+## 6. Modalités d'évaluation — barème sur 20
 
 | Critère | Points |
 |---------|--------|
@@ -88,7 +90,7 @@ Rédigez le rapport avec vos propres mots. Lorsque c'est demandé, citez le fich
 | **TOTAL** | **20 pts** |
 
 
-# 7. Règles à respecter
+## 7. Règles à respecter
 
 - Le projet est strictement individuel. Deux applications identiques ou quasi identiques (mêmes écrans, même logique, seules les couleurs ou les noms changeant) seront sanctionnées pour les deux étudiants.
 
@@ -103,7 +105,7 @@ Rédigez le rapport avec vos propres mots. Lorsque c'est demandé, citez le fich
 - Respectez votre sujet : une application qui ne correspond pas à la fiche attribuée n'est pas recevable.
 
 
-# 8. Sujet - Gestion d'une tontine de quartier – ODD 1 : Pas de pauvreté
+## 8. Sujet - Gestion d'une tontine de quartier – ODD 1 : Pas de pauvreté
 
 | Élément | Description |
 |---------|-------------|
