@@ -20,6 +20,7 @@ class AboutScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(18),
+            // ignore: deprecated_member_use
             border: Border.all(color: Colors.grey.withOpacity(0.15)),
           ),
           child: Column(
@@ -43,12 +44,12 @@ class AboutScreen extends StatelessWidget {
               _InfoLine(label: "Source des données", value: "Tontine"),
               SizedBox(height: 10),
 
-              _InfoLine(label: "Date de collecte", value: "..."),
+              _InfoLine(label: "Date de collecte", value: "12 Juin 2026"),
 
               SizedBox(height: 20),
 
               Text(
-                'Preuves ...',
+                'Preuves dans assets/proofs',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,

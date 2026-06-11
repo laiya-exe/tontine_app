@@ -1,17 +1,5 @@
 enum TypeTontine { hebdomadaire, bimensuelle, mensuelle }
 
-// Convertit un String en valeur de l'enum TypeTontine
-TypeTontine _typeFromString(String type) {
-  switch (type) {
-    case 'hebdomadaire':
-      return TypeTontine.hebdomadaire;
-    case 'bimensuelle':
-      return TypeTontine.bimensuelle;
-    default:
-      return TypeTontine.mensuelle;
-  }
-}
-
 /// Modèle de données.
 class Cotisation {
   final String id;
@@ -88,7 +76,6 @@ class Cotisation {
   }
 
   /// Crée une instance de Cotisation à partir de données JSON.
-  ///
   /// Cette méthode de fabrique reconstruit un objet Cotisation en
   /// convertissant les valeurs stockées dans une `Map<String, dynamic>`.
   /// La date est reconvertie en objet DateTime et le type de tontine
@@ -105,5 +92,17 @@ class Cotisation {
         json['type'],
       ), // retrouver l'enum à partir de la String
     );
+  }
+}
+
+// Convertit un String en valeur de l'enum TypeTontine
+TypeTontine _typeFromString(String type) {
+  switch (type) {
+    case 'hebdomadaire':
+      return TypeTontine.hebdomadaire;
+    case 'bimensuelle':
+      return TypeTontine.bimensuelle;
+    default:
+      return TypeTontine.mensuelle;
   }
 }

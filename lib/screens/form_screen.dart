@@ -56,6 +56,7 @@ class _FormulaireScreenState extends State<FormulaireScreen> {
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
+        // ignore: deprecated_member_use
         borderSide: BorderSide(color: Colors.grey.withOpacity(0.2)),
       ),
       focusedBorder: OutlineInputBorder(
@@ -91,6 +92,7 @@ class _FormulaireScreenState extends State<FormulaireScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(18),
+                    // ignore: deprecated_member_use
                     border: Border.all(color: Colors.grey.withOpacity(0.15)),
                   ),
                   child: Column(
@@ -239,6 +241,7 @@ class _FormulaireScreenState extends State<FormulaireScreen> {
                           }
 
                           if (mounted) {
+                            // ignore: use_build_context_synchronously
                             Navigator.pop(context, true);
                           }
                         }

@@ -14,6 +14,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,8 +31,9 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (context) => ListeScreen());
           case '/membre':
             final nom = settings.arguments as String?;
-            if (nom == null)
+            if (nom == null) {
               return MaterialPageRoute(builder: (context) => ListeScreen());
+            }
             return MaterialPageRoute(
               builder: (context) => MembreDetailScreen(membreNom: nom),
             );
