@@ -121,6 +121,21 @@ class _ListeScreenState extends State<ListeScreen> {
                             );
                             if (result == true) _refresh();
                           },
+                          // onTap: () {
+                          //   showDialog(
+                          //     context: context,
+                          //     builder: (context) => AlertDialog(
+                          //       title: Text('ID de la cotisation'),
+                          //       content: Text(cotisation.id),
+                          //       actions: [
+                          //         TextButton(
+                          //           onPressed: () => Navigator.pop(context),
+                          //           child: Text('Fermer'),
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   );
+                          // },
                         );
                       },
                     ),

@@ -13,6 +13,35 @@ class MembreDetailScreen extends StatefulWidget {
 class _MembreDetailScreenState extends State<MembreDetailScreen> {
   void _refresh() => setState(() {});
 
+  Future<void> _toutPayer() async {
+    final toutes = tontineService.cotisations;
+    final cotisationMembre = toutes
+        .where((c) => c.membre == widget.membreNom)
+        .toList();
+
+    final impayees = cotisationMembre.where((c) => !c.paye).toList();
+
+    if (impayees.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Toutes les cotisations sont deja payees')),
+      );
+      return;
+    }
+
+    for (var cotisation in impayees) {
+      final modifiee = cotisation.copyWith(paye: true);
+      await tontineService.modifier(modifiee);
+    }
+
+    _refresh();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('${impayees.length} cotisation(s) marquees comme payees'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final toutes = tontineService.cotisations;
@@ -36,6 +65,13 @@ class _MembreDetailScreenState extends State<MembreDetailScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black87,
+        actions: [
+          IconButton(
+            onPressed: _toutPayer,
+            icon: Icon(Icons.done_all),
+            tooltip: 'Tout signer',
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

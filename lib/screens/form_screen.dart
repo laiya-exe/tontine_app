@@ -130,6 +130,10 @@ class _FormulaireScreenState extends State<FormulaireScreen> {
                             return 'Montant valide requis';
                           }
 
+                          if (int.parse(value) < 5000){
+                            return "Le montant d'un paiement ne peut etre inferieur a 5000FCFA";
+                          }
+
                           return null;
                         },
                         onSaved: (value) {
